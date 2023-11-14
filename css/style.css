@@ -1,0 +1,120 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.logo {
+    max-width: 12rem;
+    /* Lo máximo que quiero que ocupe el tamaño de mi imagen */
+    margin-left: 5px;
+    /* Que no quede tan pegada la margen de mi navegador por 5 pixeles la imagen */
+}
+
+header {
+    display: flex;
+    /* Ponga uno al lado del otro */
+    align-items: center;
+    /* Items al centro */
+    justify-content: space-between;
+    /* Quiero que la imagen a la izquierda y la lista a la derecha por eso un space-between */
+    padding: 2rem;
+    /* Para que no esté todo tan pegado */
+    background-color: blanchedalmond;
+    /* Color para que se diferencie el navegador del body */
+}
+
+.listaMenu {
+    list-style-type: none;
+    /* Quita los puntos de la lista */
+    display: flex;
+    /* Los pone los elementos hacia los lados */
+    gap: 1rem;
+    /* Les da un espacio de 1rem en separación */
+}
+
+.listaMenu li a {
+    text-decoration: none;
+    /* Quita subrayado del enlace */
+    color: black;
+    /* Pone color de la fuente */
+    font-size: 30px;
+    /* Da el tamaño de la fuente */
+    margin-right: 12px;
+    /* Pone el margen */
+}
+
+.abrirMenu, 
+.cerrarMenu {
+    display: none;
+    /* Cuando la pantalla esté en versión web no debe aparecer el botón */
+}
+
+@media screen and (max-width: 500px) {
+    /* Aplica cuando la versión sea móvil, cuando llegue al ancho de 500px */
+    /* Los estilos que estén fuera de este query se aplicarán solo PARA WEB */
+    .abrirMenu,
+    .cerrarMenu{
+        display: block;
+        /*activa cerrar boton*/
+
+        font-size: 2.5rem;
+        /*los iconos ya estan mas grandes*/
+        cursor: pointer;
+        /*ahora aparece la manita encima de cada icon*/
+    }
+    .cerrarMenu{
+        background-color: transparent;
+        /*se le quita el fondo blanco que tiene el icon por defecto*/
+        color: azure;
+        /*el color del icon queda blanco*/
+    }
+    .menuPrincipal {
+        opacity: 0;
+        visibility: hidden;
+        /*menu debe estar escondido*/
+
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+
+        position: absolute;
+        /* Debe tener posición absoluta */
+        top: 0;
+        /**/
+        right: 0;
+        /**/
+        bottom: 0;
+        /**/
+        background-color: black;
+        /* Cuando el menú se despliegue hacia abajo, se pondrá de otro color */
+        padding: 2rem;
+        /* Espacio de 2rem */
+        box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.35);
+        /*no dara difuminacion, ni de izquierda ni de derecha,pero si lo hara de forma pareja */
+    }
+    .menuPrincipal.visible{
+        /*activara menu abrir y pondra el menu desplegable*/
+        opacity: 1;
+        visibility: visible;
+
+    }
+
+    .listaMenu {
+        flex-direction: column;
+        /* La lista de menú sea tipo columna */
+        align-items: flex-end;
+        /* Alinea items al final y a la derecha */
+    }
+
+    .listaMenu li a {
+        color: yellow;
+        /* En los href darán otro color SOLO CUANDO SE DESPLIEGUE */
+    }
+}
+
+
+
+  /*las media querys,aplican determinado estilo 
+  solo a determinado tipo de dispositivo*/
